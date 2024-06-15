@@ -18,6 +18,10 @@ if [[ ! -d ~/.zplug ]]; then
   source ~/.zplug/init.zsh && zplug update --self
 fi
 
+if [[ ! -d ~/.tmux/plugins/tpm ]]; then
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
 source ~/.zplug/init.zsh
 
 zplug "romkatv/powerlevel10k", as:theme, depth:1
