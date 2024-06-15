@@ -1,0 +1,16 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Component 	configs/symbols-outline.lua	/^    Component = { icon = "", hl = "@function" },$/;"	f
+Function 	configs/symbols-outline.lua	/^    Function = { icon = "", hl = "@function" },$/;"	f
+config 	plugins.lua	/^        config = function()$/;"	f
+config 	plugins.lua	/^    config = function()$/;"	f
+get_highlight 	configs/aerial.lua	/^  get_highlight = function(symbol, is_icon, is_collapsed)$/;"	f
+on_attach 	configs/aerial.lua	/^  on_attach = function(bufnr) end,$/;"	f
+on_first_symbols 	configs/aerial.lua	/^  on_first_symbols = function(bufnr) end,$/;"	f
+override 	configs/aerial.lua	/^    override = function(conf, source_winid)$/;"	f
+post_add_all_symbols 	configs/aerial.lua	/^  post_add_all_symbols = function(bufnr, items, ctx)$/;"	f
+post_parse_symbol 	configs/aerial.lua	/^  post_parse_symbol = function(bufnr, item, ctx)$/;"	f

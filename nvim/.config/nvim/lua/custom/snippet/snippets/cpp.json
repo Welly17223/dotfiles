@@ -1,0 +1,27 @@
+{
+  "Template": {
+    "prefix": "NewProject",
+    "body": [
+      "${LINE_COMMENT}Build time: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND} ${CURRENT_TIMEZONE_OFFSET}",
+      "",
+      "#include <iostream>",
+      "#include <string>",
+      "#include <vector>",
+      "#include <algorithm>",
+      "#include <cstdio>",
+      "#include <cstdlib>",
+      "",
+      "int main(int argc, char *argv[])",
+      "{",
+      "\t$0",
+      "\treturn 0;",
+      "}"
+    ],
+    "description": "default load template",
+    "luasnip": {
+      "priority": 2000,
+      "autotrigger": false,
+      "wordTrig": true
+    }
+  }
+}

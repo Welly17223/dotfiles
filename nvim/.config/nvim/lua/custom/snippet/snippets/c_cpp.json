@@ -1,0 +1,30 @@
+{
+  "Printvar": {
+    "prefix": "printvar",
+    "body": ["printf(\"$1 = %${2|d,s,f,lld|}\", ${1:var}$3);"],
+    "description": "default load template",
+    "luasnip": {
+      "priority": 2000,
+      "autotrigger": false,
+      "wordTrig": true
+    }
+  },
+  "fast function": {
+    "prefix": "fn",
+    "body": ["// $2", "${1:void} ${2:name} (${3:void}) {", "\t$0", "}"]
+  },
+  "for loop": {
+    "prefix": "for",
+    "body": [
+      "for(${1:int} ${2:i}; $2 < len; $2++) {",
+      "\t$0",
+      "}"
+    ],
+    "description" : "for loop fast init",
+    "luasnip" : {
+      "priority" : 2000,
+      "autotrigger" : false,
+      "wordTrig" : true
+    }
+  }
+}

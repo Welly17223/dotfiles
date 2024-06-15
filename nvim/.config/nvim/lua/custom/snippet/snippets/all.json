@@ -1,0 +1,17 @@
+{
+    "Makefile":{
+        "prefix":"Makefile",
+        "body":[
+            "CC=",
+            "FLAGS=",
+            "",
+            "all:",
+            "",
+            "debug:",
+            "debug:all",
+            "",
+            ".PHONY:all debug"
+        ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "Template": {
+    "prefix": "NewProject",
+    "body": [
+      "#include <stdbool.h>",
+      "#include <stdio.h>",
+      "#include <stdlib.h>",
+      "#include <math.h>",
+      "#include <string.h>",
+      "",
+      "int main(int argc, char *argv[])",
+      "{",
+      "\t$0",
+      "\treturn 0;",
+      "}"
+    ],
+    "description": "default load template",
+
+    "luasnip": {
+		"priority": 2000,
+		"autotrigger": false,
+		"wordTrig": true
+	}
+  }
+}
