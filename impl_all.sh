@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir -p ~/.config
+
 for i in ./*; do
   if [[ ! "$i" = "./impl.sh" ]]; then
     # stow ${i}
