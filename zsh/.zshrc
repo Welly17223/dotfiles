@@ -16,6 +16,9 @@ HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 setopt SHARE_HISTORY
+setopt NO_CASE_GLOB
+setopt AUTO_CD
+setopt CORRECT
 
 # Check if zplug is installed
 if [[ ! -d ~/.zplug ]]; then
@@ -23,6 +26,7 @@ if [[ ! -d ~/.zplug ]]; then
   source ~/.zplug/init.zsh && zplug update --self
 fi
 
+# Check if tmux plugin manager is installed
 if [[ ! -d ~/.tmux/plugins/tpm ]]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
@@ -39,13 +43,8 @@ zplug "zpm-zsh/ls"
 zplug "agkozak/zsh-z"
 zplug "MichaelAquilina/zsh-you-should-use"
 # zplug "marlonrichert/zsh-autocomplete"
-autoload -Uz compinit && compinit
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 alias htop="btop"
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
 alias man="tldr"
 alias wget='aria2c -x 20 -s 20 -j 20 --retry-wait=1'
 alias ls="exa --icons --group-directories-first"
