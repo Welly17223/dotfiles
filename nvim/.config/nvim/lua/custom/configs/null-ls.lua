@@ -29,12 +29,15 @@ local sources = {
 
   -- cpp
   b.formatting.clang_format,
-  
+
   -- python
   b.formatting.blue,
 
   --latex
   b.formatting.latexindent,
+
+  --bash/zsh
+  b.formatting.shfmt,
 }
 
 null_ls.setup {
