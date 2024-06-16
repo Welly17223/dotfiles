@@ -1,0 +1,29 @@
+#compdef stow
+
+_stow() {
+    local -a commands
+    commands=(
+        '-d:--dir[Set stow dir to DIR (default is current dir)]:_directories'
+        '-t:--target[Set target to DIR (default is parent of stow dir)]:_directories'
+        '-S:--stow[Stow the package names that follow this option]'
+        '-D:--delete[Unstow the package names that follow this option]'
+        '-R:--restow[Restow (like stow -D followed by stow -S)]'
+        '--ignore[Ignore files ending in this Perl regex]'
+        '--defer[Don\'t stow files beginning with this Perl regex if the file is already stowed to another package]'
+        '--override[Force stowing files beginning with this Perl regex if the file is already stowed to another package]'
+        '--adopt[(Use with care!)  Import existing files into stow package from target.  Please read docs before using.]'
+        '--dotfiles[Enables special handling for dotfiles that are Stow packages that start with "dot-" and not "."]'
+        '-p:--compat[Use legacy algorithm for unstowing]'
+        '-n:--no:--simulate[Do not actually make any filesystem changes]'
+        '-v:--verbose[Increase verbosity (levels are from 0 to 5; -v or --verbose adds 1; --verbose=N sets level)]'
+        '-V:--version[Show stow version number]'
+        '-h:--help[Show this help]'
+    )
+
+    _arguments -C \
+        $commands \
+        '*: :_files'
+}
+
+compdef _stow stow
+
