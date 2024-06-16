@@ -11,6 +11,11 @@ fpath=($HOME/.zsh_completion $fpath)
 export QT_QPA_PLATFORMTHEME=kde
 export EDITOR="nvim"
 FZF_BASE="~/Downloads/fzf/bin/"
+HISTFILE=~/.zsh_history
+
+HISTSIZE=1000
+SAVEHIST=1000
+setopt SHARE_HISTORY
 
 # Check if zplug is installed
 if [[ ! -d ~/.zplug ]]; then
@@ -100,3 +105,13 @@ zplug load
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 eval $(thefuck --alias)
+
+# The following lines were added by compinstall
+
+zstyle ':completion:*' matcher-list 'm:{a-za-z}={a-za-z}' \
+    'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' menu yes select
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
