@@ -37,6 +37,7 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zdharma/fast-syntax-highlighting"
 zplug "zpm-zsh/ls"
 zplug "agkozak/zsh-z"
+zplug "MichaelAquilina/zsh-you-should-use"
 # zplug "marlonrichert/zsh-autocomplete"
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -49,6 +50,7 @@ alias man="tldr"
 alias wget='aria2c -x 20 -s 20 -j 20 --retry-wait=1'
 alias ls="exa --icons --group-directories-first"
 alias tree="tre -c always"
+alias md="mkdir -p"
 tre() { command tre "$@" -e && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
 export PATH=$PATH:/usr/local/texlive/2024/bin/x86_64-linux/:~/.local/bin/:~/go/bin/
 
