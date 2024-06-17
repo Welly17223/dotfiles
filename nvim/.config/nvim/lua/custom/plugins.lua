@@ -178,7 +178,7 @@ local plugins = {
     config = function()
       require("arduino-nvim").setup()
     end,
-    lazy = false,
+    -- lazy = false,
     --
     -- dev = true,
     -- dir = "~/Documents/dev/neovim/Arduino.nvim",
