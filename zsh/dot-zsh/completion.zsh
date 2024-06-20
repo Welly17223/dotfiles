@@ -1,8 +1,7 @@
 # The following lines were added by compinstall
 
-zstyle ':completion:*' matcher-list 'm:{a-za-z}={a-za-z}' \
-    'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' menu yes select
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 autoload -Uz compinit
 compinit
