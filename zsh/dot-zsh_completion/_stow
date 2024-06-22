@@ -9,7 +9,7 @@ _stow() {
         '-D:--delete[Unstow the package names that follow this option]'
         '-R:--restow[Restow (like stow -D followed by stow -S)]'
         '--ignore[Ignore files ending in this Perl regex]'
-        '--defer[Don\'t stow files beginning with this Perl regex if the file is already stowed to another package]'
+        '--defer[Don'"'"'t stow files beginning with this Perl regex if the file is already stowed to another package]'
         '--override[Force stowing files beginning with this Perl regex if the file is already stowed to another package]'
         '--adopt[(Use with care!)  Import existing files into stow package from target.  Please read docs before using.]'
         '--dotfiles[Enables special handling for dotfiles that are Stow packages that start with "dot-" and not "."]'
