@@ -14,3 +14,13 @@ alias .....="../../../.."
 alias ......="../../../../.."
 alias .......="../../../../../.."
 tre() { command tre "$@" -e && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
+
+# git aliases 
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias gcm="git commit -m"
+alias gca="git commit --amend"
+alias gco="git checkout"
+alias gcb="git checkout -b"
+alias gd="git diff"
