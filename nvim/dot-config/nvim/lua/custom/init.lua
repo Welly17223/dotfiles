@@ -35,5 +35,4 @@ opt.smartindent = true
 opt.relativenumber = true
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
-opt.nofoldenable = false
 opt.foldlevel = 99

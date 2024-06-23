@@ -262,6 +262,14 @@ local plugins = {
     },
     vim.cmd "let test#strategy = 'vimux'",
   },
+  {
+    "mg979/vim-visual-multi",
+    config = function()
+      vim.g.VM_maps['Find Under']         = '<C-i>'
+      vim.g.VM_maps['Find Subword Under'] = '<C-i>'
+    end,
+    lazy = false,
+  }
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
