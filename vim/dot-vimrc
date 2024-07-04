@@ -5,13 +5,22 @@ set relativenumber
 set tabstop=2
 set shiftwidth=2
 set statusline=%F\ -\ FileType:\ %y\ %l\/\%L
-colorscheme slate
+set hidden
+set cursorline
+set cursorlineopt=both
+
+set termguicolors
+
+let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_enable_italic = 0
+let g:tokyonight_current_word = "underline"
 
 let mapleader = "\<Space>"
 
 call plug#begin()
 
 " List your plugins here
+Plug 'itmammoth/doorboy.vim'
 Plug 'liuchengxu/vim-which-key'
 Plug 'tpope/vim-surround'
 Plug 'prabirshrestha/vim-lsp'
@@ -19,12 +28,20 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'kevinhwang91/promise-async' 
-Plug 'kevinhwang91/nvim-ufo' 
+Plug 'ap/vim-buftabline'
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
+Plug 'mhinz/vim-startify'
+Plug 'ubaldot/vim-outline'
+Plug 'itmammoth/doorboy.vim'
+Plug 'ghifarit53/tokyonight-vim'
 
 call plug#end()
 
+colorscheme tokyonight
+
 if executable('clangd')
-    " pip install python-lsp-server
     au User lsp_setup call lsp#register_server({
         \ 'name': 'clangd',
         \ 'cmd': {server_info->['clangd']},
@@ -32,7 +49,9 @@ if executable('clangd')
         \ })
 endif
 
-set foldmethod=manual
+set foldmethod=expr
+  \ foldexpr=lsp#ui#vim#folding#foldexpr()
+  \ foldtext=lsp#ui#vim#folding#foldtext()
 
 let g:lsp_fold_enabled = 0
 
@@ -51,7 +70,7 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> ]g <plug>(lsp-next-diagnostic)
     nmap <buffer> K <plug>(lsp-hover)
     nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
-    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+    " nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
 
 		vnoremap <buffer> <leader>/ <plug>()
 
@@ -62,9 +81,9 @@ function! s:on_lsp_buffer_enabled() abort
 endfunction
 
 augroup lsp_install
-    au!
-    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+	au!
+	" call s:on_lsp_buffer_enabled only for languages that has the server registered.
+	autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -74,9 +93,14 @@ inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 nnoremap <silent> <leader> <cmd>WhichKey ''<CR> 
 set timeoutlen=500
 
-nnoremap <leader>s <cmd>wincmd s<CR>
+nnoremap <leader>h <cmd>wincmd s<CR>
 nnoremap <leader>q <cmd>wincmd q<CR>
 nnoremap <leader>v <cmd>wincmd v<CR>
+nnoremap <leader>s <cmd>Startify<CR>
+nnoremap <silent> <F8> <Plug>OutlineToggle<CR>
+nnoremap <silent> <leader>l <Plug>OutlineRefresh
+nnoremap <silent> <leader>o <Plug>OutlineGoToOutline
+
 nnoremap <C-j> <cmd>wincmd j<CR>
 nnoremap <C-h> <cmd>wincmd h<CR>
 nnoremap <C-k> <cmd>wincmd k<CR>
@@ -86,15 +110,46 @@ nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 nnoremap <C-s> <cmd>w<CR>
 
+nnoremap <C-n> <cmd>NERDTreeToggle<CR>
+
 nnoremap <tab> <cmd>bnext<CR>
 nnoremap <S-Tab> <cmd>bprev<CR>
 nnoremap <leader>x <cmd>bdelete<CR>
 
-nnoremap j gj
+function! Exe()
+	if &filetype=="c"
+		nnoremap <F9> <cmd>w<CR><cmd>!gcc %:p -o %:r -Wall;./%:r<CR>  
+		return "c compile is done"
+	elseif &filetype=="cpp"
+		nnoremap <F9> <cmd>w<CR><cmd>!g++ %:p -o %:r -Wall && ./%:r<CR>  
+		return "c++ compile is done"
+	elseif &filetype=="rust"
+		nnoremap <F9> <cmd>w<CR><cmd>!cargo run<CR>  
+		return "rust compile is done"
+	elseif &filetype=="bash" || &filetype=="zsh"
+		nnoremap <F9> <cmd>w<CR><cmd>!bash %:p<CR>  
+		return "shell compile is done"
+	elseif &filetype=="python"
+		nnoremap <F9> <cmd>w<CR><cmd>!python %:p<CR>  
+		return "python compile is done"
+	elseif &filetype=="vim"
+		nnoremap <F9> <cmd>w<CR><cmd>echo "haha"<CR>
+		return "vim compile function?"
+	else
+		nnoremap <F9> <cmd>w<CR><cmd>echo &filetype." is not support to compile and execute"<CR>
+		return &filetype." is not support to compile and execute"
+	endif
+
+	return "fail to load function"
+endfunction
+
+nnoremap <F9> <cmd>call Exe()<CR>
+
+nnorema j gj
 nnoremap k gk
 
-inoremap jj <esc>
+inorema jj <esc>
 inoremap kk <esc>
 
-vnoremap > >gv
+vnorema > >gv
 vnoremap < <gv
