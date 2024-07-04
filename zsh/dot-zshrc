@@ -13,10 +13,11 @@ if [[ ! -d ~/.tmux/plugins/tpm ]]; then
 fi
 
 # some settings
-source ~/.zsh/plugin.zsh
-source ~/.zsh/alias.zsh
-source ~/.zsh/opt.zsh
-source ~/.zsh/completion.zsh
+source $HOME/.profile
+source $HOME/.zsh/plugin.zsh
+source $HOME/.zsh/alias.zsh
+source $HOME/.zsh/opt.zsh
+source $HOME/.zsh/completion.zsh
 
 # some tools
 [ -f ~/.zsh/.fzf.zsh ] && source ~/.zsh/.fzf.zsh

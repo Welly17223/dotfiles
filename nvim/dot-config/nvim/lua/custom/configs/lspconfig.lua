@@ -4,7 +4,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "cssls", "tsserver", "html", "clangd", "pyright" }
+local servers = { "cssls", "tsserver", "html", "clangd", "pyright", "arduino_language_server" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -28,24 +28,4 @@ lspconfig.grammarly.setup {
 }
 lspconfig.ltex.setup {}
 lspconfig.pylsp.setup {}
-
-lspconfig.arduino_language_server.setup {
-  cmd = {
-    "arduino-language-server",
-    " -clangd /usr/local/bin/clangd",
-    " -cli /usr/local/bin/arduino-cli",
-    " -cli-config $HOME/.arduino15/arduino-cli.yaml",
-  },
-  filetypes = { "arduino" },
-}
---[[ lspconfig.ccls.setup {
-  init_options = {
-    compilationDatabaseDirectory = "build";
-    index = {
-      threads = 0;
-    };
-    clang = {
-      excludeArgs = { "--gcc-toolchain=/usr/bin"} ;
-    };
-  }
-} ]]
+lspconfig.vimls.setup {}

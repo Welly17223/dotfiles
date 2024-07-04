@@ -67,6 +67,12 @@ M.mason = {
   },
 }
 
+M.dap = {
+  ensure_installed = {
+    "codelldeb",
+  }
+}
+
 -- git support in nvimtree
 M.nvimtree = {
   git = {
