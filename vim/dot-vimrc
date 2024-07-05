@@ -36,6 +36,8 @@ Plug 'mhinz/vim-startify'
 Plug 'ubaldot/vim-outline'
 Plug 'itmammoth/doorboy.vim'
 Plug 'ghifarit53/tokyonight-vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -97,6 +99,9 @@ nnoremap <leader>h <cmd>wincmd s<CR>
 nnoremap <leader>q <cmd>wincmd q<CR>
 nnoremap <leader>v <cmd>wincmd v<CR>
 nnoremap <leader>s <cmd>Startify<CR>
+nnoremap <leader>fg <cmd>Lines<CR>
+nnoremap <leader>fr <cmd>RG<CR>
+nnoremap <leader>fz <cmd>BLines<CR>
 nnoremap <silent> <F8> <Plug>OutlineToggle<CR>
 nnoremap <silent> <leader>l <Plug>OutlineRefresh
 nnoremap <silent> <leader>o <Plug>OutlineGoToOutline
