@@ -38,8 +38,17 @@ Plug 'itmammoth/doorboy.vim'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+" Track the engine.
+Plug 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_right_sep = ''
+let g:airline_left_sep =  ''
 
 colorscheme tokyonight
 
