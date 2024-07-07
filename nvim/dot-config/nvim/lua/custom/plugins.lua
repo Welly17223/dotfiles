@@ -108,23 +108,6 @@ local plugins = {
       },
     },
     ft = { "rust" },
-    config = function()
-      vim.g.rustaceanvim = {
-        inlay_hints = {
-          highlight = "NonText",
-        },
-        tools = {
-          hover_actions = {
-            auto_focus = true,
-          },
-        },
-        server = {
-          on_attach = function(client, bufnr)
-            require("lsp-inlayhints").on_attach(client, bufnr)
-          end,
-        },
-      }
-    end,
   },
   {
     "rcarriga/nvim-dap-ui",
@@ -219,26 +202,26 @@ local plugins = {
     "mhinz/vim-startify",
     lazy = false,
     config = function()
-      require "custom.configs.startify" ()
+      require "custom.configs.startify"
     end,
   },
   {
-    "christoomey/vim-tmux-navigator",
-    cmd = {
-      "TmuxNavigateLeft",
-      "TmuxNavigateDown",
-      "TmuxNavigateUp",
-      "TmuxNavigateRight",
-      "TmuxNavigatePrevious",
-    },
-    config = function()
-      vim.keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>")
-      vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>")
-      vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>")
-      vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>")
-      vim.g.tmux_navigator_save_on_switch = 2
-    end,
+  "christoomey/vim-tmux-navigator",
+  cmd = {
+    "TmuxNavigateLeft",
+    "TmuxNavigateDown",
+    "TmuxNavigateUp",
+    "TmuxNavigateRight",
+    "TmuxNavigatePrevious",
   },
+  keys = {
+    { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+    { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+    { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+    { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+    { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+  },
+},
   {
     "vim-test/vim-test",
     dependencies = {

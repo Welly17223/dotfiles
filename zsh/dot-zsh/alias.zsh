@@ -8,14 +8,21 @@ alias adi="arduino-cli"
 alias adib="arduino-cli board"
 alias adic="arduino-cli core"
 alias adil="arduino-cli lib"
-alias ...="../.."
-alias ....="../../.."
-alias .....="../../../.."
-alias ......="../../../../.."
-alias .......="../../../../../.."
+
+dot=...
+dir=../..
+
+for _ in {1..15}; do
+  alias $dot="cd $dir"
+  dot=$dot.
+  dir=$dir/..
+done
+
+unset dot dir
+
 tre() { command tre "$@" -e && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
 
-# git aliases 
+# git aliases
 alias gs="git status"
 alias ga="git add"
 alias gc="git commit"

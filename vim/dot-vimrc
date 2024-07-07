@@ -11,16 +11,13 @@ set cursorlineopt=both
 
 set termguicolors
 
-let g:tokyonight_style = 'night' " available: night, storm
-let g:tokyonight_enable_italic = 0
-let g:tokyonight_current_word = "underline"
+hi CursorLine gui=underline cterm=underline
 
 let mapleader = "\<Space>"
 
 call plug#begin()
 
 " List your plugins here
-Plug 'itmammoth/doorboy.vim'
 Plug 'liuchengxu/vim-which-key'
 Plug 'tpope/vim-surround'
 Plug 'prabirshrestha/vim-lsp'
@@ -33,7 +30,6 @@ Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 Plug 'mhinz/vim-startify'
-Plug 'ubaldot/vim-outline'
 Plug 'itmammoth/doorboy.vim'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -43,14 +39,62 @@ Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
 Plug 'vim-airline/vim-airline'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_right_sep = ''
-let g:airline_left_sep =  ''
+let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_enable_italic = 0
+let g:tokyonight_cursor='blue'
+" let g:tokyonight_current_word = 'underline'
 
 colorscheme tokyonight
+
+hi clear CursorLine
+hi CursorLine gui=underline cterm=underline
+	
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_right_sep = ''
+let g:airline_left_sep =  ''
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+let g:UltiSnipsEditSplit="vertical"
+
+let g:startify_lists = [
+			\{ "type" : "bookmarks", "header" : [ "Bookmarks" ] },
+			\{ "type" : "sessions",  "header" : [ "Sessions" ] },
+			\{ "type" : "commands",  "header" : [ "Commands" ] },
+			\{ "type" : "files",     "header" : [ "MRU" ] },
+			\{ "type" : "dir",       "header" : [ "Commits in : " .getcwd() ] },
+			\]
+let g:startify_files_number = 8
+
+let g:startify_bookmarks = [{'v': '~/.vimrc'}, {'z': '~/.zshrc'},{'t':'~/.tmux.conf'}]
+let g:ascii = [ 
+	\"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
+	\"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⣠⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
+	\"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣡⣾⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣟⠻⣿⣿⣿⣿⣿⣿⣿⣿",
+	\"⣿⣿⣿⣿⣿⣿⣿⣿⡿⢫⣷⣿⣿⣿⣿⣿⣿⣿⣾⣯⣿⡿⢧⡚⢷⣌⣽⣿⣿⣿⣿⣿⣶⡌⣿⣿⣿⣿⣿⣿",
+	\"⣿⣿⣿⣿⣿⣿⣿⣿⠇⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣮⣇⣘⠿⢹⣿⣿⣿⣿⣿⣻⢿⣿⣿⣿⣿⣿",
+	\"⣿⣿⣿⣿⣿⣿⣿⣿⠀⢸⣿⣿⡇⣿⣿⣿⣿⣿⣿⣿⣿⡟⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣻⣿⣿⣿⣿",
+	\"⣿⣿⣿⣿⣿⣿⣿⡇⠀⣬⠏⣿⡇⢻⣿⣿⣿⣿⣿⣿⣿⣷⣼⣿⣿⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⢻⣿⣿⣿⣿",
+	\"⣿⣿⣿⣿⣿⣿⣿⠀⠈⠁⠀⣿⡇⠘⡟⣿⣿⣿⣿⣿⣿⣿⣿⡏⠿⣿⣟⣿⣿⣿⣿⣿⣿⣿⣿⣇⣿⣿⣿⣿",
+	\"⣿⣿⣿⣿⣿⣿⡏⠀⠀⠐⠀⢻⣇⠀⠀⠹⣿⣿⣿⣿⣿⣿⣩⡶⠼⠟⠻⠞⣿⡈⠻⣟⢻⣿⣿⣿⣿⣿⣿⣿",
+	\"⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⢿⠀⡆⠀⠘⢿⢻⡿⣿⣧⣷⢣⣶⡃⢀⣾⡆⡋⣧⠙⢿⣿⣿⣟⣿⣿⣿⣿",
+	\"⣿⣿⣿⣿⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⡥⠂⡐⠀⠁⠑⣾⣿⣿⣾⣿⣿⣿⡿⣷⣷⣿⣧⣾⣿⣿⣿⣿⣿⣿⣿",
+	\"⣿⣿⡿⣿⣍⡴⠆⠀⠀⠀⠀⠀⠀⠀⠀⣼⣄⣀⣷⡄⣙⢿⣿⣿⣿⣿⣯⣶⣿⣿⢟⣾⣿⣿⢡⣿⣿⣿⣿⣿",
+	\"⣿⡏⣾⣿⣿⣿⣷⣦⠀⠀⠀⢀⡀⠀⠀⠠⣭⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⣡⣾⣿⣿⢏⣾⣿⣿⣿⣿⣿",
+	\"⣿⣿⣿⣿⣿⣿⣿⣿⡴⠀⠀⠀⠀⠀⠠⠀⠰⣿⣿⣿⣷⣿⠿⠿⣿⣿⣭⡶⣫⠔⢻⢿⢇⣾⣿⣿⣿⣿⣿⣿",
+	\"⣿⣿⣿⡿⢫⣽⠟⣋⠀⠀⠀⠀⣶⣦⠀⠀⠀⠈⠻⣿⣿⣿⣾⣿⣿⣿⣿⡿⣣⣿⣿⢸⣾⣿⣿⣿⣿⣿⣿⣿",
+	\"⡿⠛⣹⣶⣶⣶⣾⣿⣷⣦⣤⣤⣀⣀⠀⠀⠀⠀⠀⠀⠉⠛⠻⢿⣿⡿⠫⠾⠿⠋⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
+	\"⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣀⡆⣠⢀⣴⣏⡀⠀⠀⠀⠉⠀⠀⢀⣠⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
+	\"⠿⠛⠛⠛⠛⠛⠛⠻⢿⣿⣿⣿⣿⣯⣟⠷⢷⣿⡿⠋⠀⠀⠀⠀⣵⡀⢠⡿⠋⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
+	\"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠛⢿⣿⣿⠂⠀⠀⠀⠀⠀⢀⣽⣿⣿⣿⣿⣿⣿⣿⣍⠛⠿⣿⣿⣿⣿⣿⣿",
+	\]
+let g:startify_custom_header = g:ascii + startify#fortune#boxed()
 
 if executable('clangd')
     au User lsp_setup call lsp#register_server({
@@ -101,7 +145,7 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
-nnoremap <silent> <leader> <cmd>WhichKey ''<CR> 
+" nnoremap <silent> <leader> <cmd>WhichKey ''<CR> 
 set timeoutlen=500
 
 nnoremap <leader>h <cmd>wincmd s<CR>
@@ -115,11 +159,6 @@ nnoremap <silent> <F8> <Plug>OutlineToggle<CR>
 nnoremap <silent> <leader>l <Plug>OutlineRefresh
 nnoremap <silent> <leader>o <Plug>OutlineGoToOutline
 
-nnoremap <C-j> <cmd>wincmd j<CR>
-nnoremap <C-h> <cmd>wincmd h<CR>
-nnoremap <C-k> <cmd>wincmd k<CR>
-nnoremap <C-l> <cmd>wincmd l<CR>
-
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 nnoremap <C-s> <cmd>w<CR>
@@ -130,40 +169,48 @@ nnoremap <tab> <cmd>bnext<CR>
 nnoremap <S-Tab> <cmd>bprev<CR>
 nnoremap <leader>x <cmd>bdelete<CR>
 
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <C-h> <cmd>TmuxNavigateLeft<CR>
+nnoremap <silent> <C-j> <cmd>TmuxNavigateDown<CR>
+nnoremap <silent> <C-k> <cmd>TmuxNavigateUp<CR>
+nnoremap <silent> <C-l> <cmd>TmuxNavigateRight<CR>
+nnoremap <silent> <C-\> <cmd>TmuxNavigatePrevious<CR>
+
 function! Exe()
 	if &filetype=="c"
-		nnoremap <F9> <cmd>w<CR><cmd>!gcc %:p -o %:r -Wall;./%:r<CR>  
-		return "c compile is done"
+		return "\<cmd>w\<CR>\<cmd>!gcc %:p -o %:r -Wall;./%:r\<CR>"
 	elseif &filetype=="cpp"
-		nnoremap <F9> <cmd>w<CR><cmd>!g++ %:p -o %:r -Wall && ./%:r<CR>  
-		return "c++ compile is done"
+		return "\<cmd>w\<CR>\<cmd>!g++ %:p -o %:r -Wall && ./%:r\<CR>"
 	elseif &filetype=="rust"
-		nnoremap <F9> <cmd>w<CR><cmd>!cargo run<CR>  
-		return "rust compile is done"
+		return "\<cmd>w\<CR>\<cmd>!cargo run\<CR>"
 	elseif &filetype=="bash" || &filetype=="zsh"
-		nnoremap <F9> <cmd>w<CR><cmd>!bash %:p<CR>  
-		return "shell compile is done"
+		return "\<cmd>w\<CR>\<cmd>!bash %:p\<CR> "
 	elseif &filetype=="python"
-		nnoremap <F9> <cmd>w<CR><cmd>!python %:p<CR>  
-		return "python compile is done"
+		return "\<cmd>w\<CR>\<cmd>!python %:p\<CR>"
 	elseif &filetype=="vim"
-		nnoremap <F9> <cmd>w<CR><cmd>echo "haha"<CR>
-		return "vim compile function?"
+		return "\<cmd>w\<CR>\<cmd>echo 'haha'\<CR>"
+	elseif &filetype=="lua"
+		return "\<cmd>w\<CR>\<cmd>!lua %:p\<CR>"
 	else
-		nnoremap <F9> <cmd>w<CR><cmd>echo &filetype." is not support to compile and execute"<CR>
-		return &filetype." is not support to compile and execute"
+		return "\<cmd>w\<CR>\<cmd>echo &filetype.' is not support to compile and execute'\<CR>"
 	endif
 
 	return "fail to load function"
 endfunction
 
-nnoremap <F9> <cmd>call Exe()<CR>
+function! Test()
+	let x = input("say something: ")
+	echo x
+endfunction
 
-nnorema j gj
-nnoremap k gk
+nnoremap <expr> <F9> Exe()
+nnoremap <expr> <F3> Test() 
+nnoremap <expr> j ( v:count == 0 ? "gj":"j" )
+nnoremap <expr> k ( v:count == 0 ? "gk":"k" )
 
-inorema jj <esc>
+inorem jj <esc>
 inoremap kk <esc>
 
-vnorema > >gv
+vnorem > >gv
 vnoremap < <gv
