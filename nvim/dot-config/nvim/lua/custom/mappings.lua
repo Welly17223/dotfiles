@@ -23,6 +23,100 @@ M.general = {
       end,
       "toggle inlay hints",
     },
+    ["gd"] = {
+      function()
+        vim.lsp.buf.definition()
+      end,
+      "go to definition",
+    },
+    ["<leader>vd"] = {
+      function()
+        vim.lsp.buf.declaration()
+      end,
+      "go to declaration",
+    },
+    ["<leader>vi"] = {
+      function()
+        vim.lsp.buf.implementation()
+      end,
+      "go to implementation",
+    },
+    ["<leader>vt"] = {
+      function()
+        vim.lsp.buf.type_definition()
+      end,
+      "go to type definition",
+    },
+    ["<leader>vr"] = {
+      function()
+        vim.lsp.buf.references()
+      end,
+      "go to references",
+    },
+    ["<leader>vh"] = {
+      function()
+        vim.lsp.buf.hover()
+      end,
+      "show hover information",
+    },
+    ["<leader>vs"] = {
+      function()
+        vim.lsp.buf.signature_help()
+      end,
+      "show signature help",
+    },
+    ["<leader>vf"] = {
+      function()
+        vim.lsp.buf.formatting()
+      end,
+      "formatting",
+    },
+    ["<leader>vn"] = {
+      function()
+        vim.lsp.diagnostic.goto_next()
+      end,
+      "go to next diagnostic",
+    },
+    ["<leader>vp"] = {
+      function()
+        vim.lsp.diagnostic.goto_prev()
+      end,
+      "go to previous diagnostic",
+    },
+    ["<leader>vl"] = {
+      function()
+        vim.lsp.diagnostic.set_loclist()
+      end,
+      "set loclist",
+    },
+    ["<leader>vv"] = {
+      function()
+        vim.lsp.diagnostic.show_line_diagnostics()
+      end,
+      "show line diagnostics",
+    },
+    ["<leader>vc"] = {
+      function()
+        vim.lsp.diagnostic.show_cursor_diagnostics()
+      end,
+      "show cursor diagnostics",
+    },
+    ["<leader>vr"] = {
+      function()
+        vim.lsp.buf.references()
+      end,
+      "show references",
+    },
+    ["<leader>va"] = {
+      function()
+        vim.lsp.buf.code_action()
+      end,
+      "show code actions",
+    },
+    ["<leader>vs"] = {
+      function()
+        vim.lsp.buf.signature_help()
+      end, },
 
     -- run c --
     ["<leader>cc"] = { "<cmd>w<CR>:!~/runc.sh %:p:t %:p:h<CR>", "Compile C language And Run" },
@@ -66,7 +160,7 @@ M.general = {
     ["<leader>ct"] = { "<cmd>VimtexCompile<CR>:VimtexClean<CR>", "Compile latexfile and preview" },
 
     -- tagbar --
-    ["<F8>"] = { "<cmd>SymbolsOutline<CR>" },
+    -- ["<F8>"] = { "<cmd>SymbolsOutline<CR>" },
 
     -- move linei --
     ["<A-j>"] = { "<cmd>move +1<CR>" },
