@@ -5,7 +5,7 @@ FZF_BASE="~/Downloads/fzf/bin/"
 # environment variables
 export QT_QPA_PLATFORMTHEME=kde
 export EDITOR="nvim"
-export PATH=$PATH:/usr/local/texlive/2024/bin/x86_64-linux/:~/.local/bin/:~/go/bin/
+export PATH=$PATH:/usr/local/textlive/2024/bin/x86_64-linux/:~/.local/bin/:~/go/bin/
 
 # Check if tmux plugin manager is installed
 if [[ ! -d ~/.tmux/plugins/tpm ]]; then
