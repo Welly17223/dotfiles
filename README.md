@@ -1,7 +1,7 @@
 # Dependence 
 remember to install
 ```bash
-sudo pacman -S exa tldr thefuck openssh fzf stow btop zsh
+sudo pacman -S exa tldr thefuck openssh fzf stow btop zsh nodejs
 ```
 And nerd fonts
 

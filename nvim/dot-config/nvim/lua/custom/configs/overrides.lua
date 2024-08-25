@@ -5,6 +5,9 @@ M.treesitter = {
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
+    disable = {
+      "latex",
+    }
   },
   ensure_installed = {
     "vim",
@@ -65,6 +68,12 @@ M.mason = {
     "ltex-ls",
     "latxindent",
   },
+}
+
+M.dap = {
+  ensure_installed = {
+    "codelldeb",
+  }
 }
 
 -- git support in nvimtree

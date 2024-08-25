@@ -25,7 +25,10 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = overrides.mason,
   },
-
+  {
+    "jay-babu/mason-nvim-dap.nvim",
+    opts = overrides.dap,
+  },
   {
     "nvim-treesitter/nvim-treesitter",
     opts = overrides.treesitter,
@@ -53,47 +56,67 @@ local plugins = {
     --  require "plugins.configs.nvim-jdtls"
     -- end,
   },
-
-  {
-    "sindrets/diffview.nvim",
-    lazy = false,
-  },
-
-  {
-    "glepnir/template.nvim",
-    cmd = { "Template", "TemProject" },
-    config = function()
-      require("template").setup {
-        -- config in there
-        temp_dir = "~/.config/nvim/templates/",
-      }
-    end,
-  },
-
   {
     "simrat39/symbols-outline.nvim",
-    lazy = false,
+    keys = {
+      { "<F8>", "<cmd>SymbolsOutline<CR>", "Show symbols outline" },
+    },
     config = function()
       require "custom.configs.symbols-outline"
       require("symbols-outline").setup()
     end,
   },
-
   {
     "stevearc/aerial.nvim",
-    enabled = false,
-    config = function()
-      require "custom.configs.aerial"
-    end,
     opts = {},
     -- Optional dependencies
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
     },
-    -- lazy = false,
+    keys = {
+      { "<leader>a",  "<cmd>AerialToggle!<CR>",    "Toggle Aerial" },
+      { "<leader>fx", "<cmd>Telescope aerial<CR>", "Search Outline" },
+    },
+    config = function()
+      require("aerial").setup {
+        backends = { "lsp", "treesitter" },
+        filter_kind = {
+          "Array",
+          "Boolean",
+          "Class",
+          "Constant",
+          "Constructor",
+          "Enum",
+          "EnumMember",
+          "Event",
+          "Field",
+          "File",
+          "Function",
+          "Interface",
+          "Key",
+          "Method",
+          "Module",
+          "Namespace",
+          "Number",
+          "Object",
+          "Operator",
+          "Package",
+          "Property",
+          "String",
+          "Struct",
+          "TypeParameter",
+          "Variable",
+        },
+        -- optionally use on_attach to set keymaps when aerial has attached to a buffer
+        on_attach = function(bufnr)
+          -- Jump forwards/backwards with '{' and '}'
+          vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+          vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+        end,
+      }
+    end,
   },
-
   {
     "junegunn/fzf",
     lazy = false,
@@ -116,42 +139,61 @@ local plugins = {
       },
     },
     ft = { "rust" },
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    keys = {
+      n = {
+        ["<leader>tu"] = { "<cmd>lua require('dapui').toggle()", "Toggle DAP UI" },
+        ["<leader>to"] = { "<cmd>lua require('dapui').open()", "Open DAP UI" },
+        ["<leader>tc"] = { "<cmd>lua require('dapui').close()", "Close DAP UI" },
+      },
+    },
     config = function()
-      vim.g.rustaceanvim = {
-        inlay_hints = {
-          highlight = "NonText",
-        },
-        tools = {
-          hover_actions = {
-            auto_focus = true,
-          },
-        },
-        server = {
-          on_attach = function(client, bufnr)
-            require("lsp-inlayhints").on_attach(client, bufnr)
+      require("dapui").setup()
+      require "custom.configs.dapui"
+    end,
+    ft = { "rust", "python", "c", "cpp", "java", "js" },
+  },
+  {
+    "MunifTanjim/prettier.nvim",
+    config = function()
+      local prettier = require "prettier"
+      prettier.setup {
+        ["null-ls"] = {
+          condition = function()
+            return prettier.config_exists {
+              -- if `false`, skips checking `package.json` for `"prettier"` key
+              check_package_json = true,
+            }
           end,
+          runtime_condition = function(params)
+            -- return false to skip running prettier
+            return true
+          end,
+          timeout = 5000,
+        },
+        filetypes = {
+          "css",
+          "graphql",
+          "html",
+          "javascript",
+          "javascriptreact",
+          "json",
+          "less",
+          "markdown",
+          "scss",
+          "typescript",
+          "typescriptreact",
+          "yaml",
         },
       }
     end,
   },
-
-  {
-    "mfussenegger/nvim-dap",
-    lazy = false,
-  },
-  {
-    "rcarriga/nvim-dap-ui",
-    requires = { "mfussenegger/nvim-dap" },
-    lazy = false,
-  },
-
-  {
-    "MunifTanjim/prettier.nvim",
-    lazy = false,
-  },
   {
     "lervag/vimtex",
-    lazy = false, -- lazy-loading will disable inverse search
+    ft = { "tex" }, -- lazy-loading will disable inverse search
     config = function()
       vim.api.nvim_create_autocmd({ "FileType" }, {
         group = vim.api.nvim_create_augroup("lazyvim_vimtex_conceal", { clear = true }),
@@ -178,17 +220,17 @@ local plugins = {
     config = function()
       require("arduino-nvim").setup()
     end,
-    -- lazy = false,
+    ft = { "ino" },
     --
     -- dev = true,
     -- dir = "~/Documents/dev/neovim/Arduino.nvim",
   },
   {
-    "dapt4/vim-autoSurround",
-    lazy = true,
+    "tpope/vim-surround",
+    lazy = false,
   },
   {
-    "tpope/vim-surround",
+    "tpope/vim-repeat",
     lazy = false,
   },
   {
@@ -221,7 +263,7 @@ local plugins = {
     "mhinz/vim-startify",
     lazy = false,
     config = function()
-      require "custom.configs.startify" ()
+      require "custom.configs.startify"
     end,
   },
   {
@@ -233,13 +275,13 @@ local plugins = {
       "TmuxNavigateRight",
       "TmuxNavigatePrevious",
     },
-    config = function ()
-      vim.keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>")
-      vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>")
-      vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>")
-      vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>")
-      vim.g.tmux_navigator_save_on_switch = 2
-    end
+    keys = {
+      { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+    },
   },
   {
     "vim-test/vim-test",
@@ -248,11 +290,14 @@ local plugins = {
         "preservim/vimux",
       },
     },
-    vim.keymap.set("n", "<leader>tt", ":TestNearest<CR>"),
-    vim.keymap.set("n", "<leader>tT", ":TestFile<CR>"),
-    vim.keymap.set("n", "<leader>ta", ":TestSuite<CR>"),
-    vim.keymap.set("n", "<leader>tl", ":TestLast<CR>"),
-    vim.keymap.set("n", "<leader>tg", ":TestVisit<CR>"),
+    config = function()
+      vim.keymap.set("n", "<leader>tt", ":TestNearest<CR>")
+      vim.keymap.set("n", "<leader>tT", ":TestFile<CR>")
+      vim.keymap.set("n", "<leader>ta", ":TestSuite<CR>")
+      vim.keymap.set("n", "<leader>tl", ":TestLast<CR>")
+      vim.keymap.set("n", "<leader>tg", ":TestVisit<CR>")
+      vim.cmd "let test#strategy = 'vimux'"
+    end,
     cmd = {
       "TestNearest",
       "TestFile",
@@ -260,16 +305,51 @@ local plugins = {
       "TestLast",
       "TestVisit",
     },
-    vim.cmd "let test#strategy = 'vimux'",
   },
   {
     "mg979/vim-visual-multi",
     config = function()
-      vim.g.VM_maps['Find Under']         = '<C-i>'
-      vim.g.VM_maps['Find Subword Under'] = '<C-i>'
+      vim.g.VM_maps["Find Under"] = "<C-i>"
+      vim.g.VM_maps["Find Subword Under"] = "<C-i>"
     end,
     lazy = false,
-  }
+  },
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = {
+      {
+        "kevinhwang91/promise-async",
+      },
+    },
+    config = function()
+      vim.o.foldcolumn = "1" -- '0' is not bad
+      vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+
+      -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+      }
+      local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
+      for _, ls in ipairs(language_servers) do
+        require("lspconfig")[ls].setup {
+          capabilities = capabilities,
+          -- you can add other fields for setting up lsp server in this table
+        }
+      end
+
+      require("ufo").setup()
+    end,
+    lazy = false,
+
+    --[[ keys = {
+      { "n", "zR", require("ufo").openAllFolds() },
+      { "n", "zM", require("ufo").closeAllFolds() },
+    }, ]]
+  },
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
