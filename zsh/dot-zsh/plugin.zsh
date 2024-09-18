@@ -15,6 +15,7 @@ zplug "zdharma/fast-syntax-highlighting"
 zplug "zpm-zsh/ls"
 zplug "agkozak/zsh-z"
 zplug "MichaelAquilina/zsh-you-should-use"
+zplug "Aloxaf/fzf-tab"
 # zplug "marlonrichert/zsh-autocomplete"
 
 if ! zplug check --verbose; then
