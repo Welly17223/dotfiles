@@ -18,6 +18,7 @@ source $HOME/.zsh/plugin.zsh
 source $HOME/.zsh/alias.zsh
 source $HOME/.zsh/opt.zsh
 source $HOME/.zsh/completion.zsh
+source $HOME/.cargo/env
 
 # some tools
 [ -f ~/.zsh/.fzf.zsh ] && source ~/.zsh/.fzf.zsh

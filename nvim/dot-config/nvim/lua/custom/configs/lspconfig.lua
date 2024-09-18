@@ -4,7 +4,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "cssls", "tsserver", "pyright", "pylsp", "vimls", "texlab", "cmake" }
+local servers = { "cssls", "ts_ls", "pyright", "vimls", "texlab", "cmake", "verible"}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -36,3 +36,6 @@ lspconfig.ltex.setup{
   filetypes = { "latex", "tex", "markdown" },
   enabled = { "latex", "tex", "markdown" },
 }
+
+lspconfig.arduino_language_server.setup{}
+
