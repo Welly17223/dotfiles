@@ -2,14 +2,11 @@ if command -v htop &> /dev/null; then
   alias htop="htop"
   alias top="htop"
 fi
-if command -v tldr &> /dev/null; then
-  alias man="tldr"
-fi
 if command -v aria2c &> /dev/null; then
-  alias wget="aria2c -x 20 -s 20 -j 20 --retry-wait=1"
+  alias wget="aria2c -x 16 -s 16 -j 16 --retry-wait=1"
 fi
 if command -v exa &> /dev/null; then
-  alias ls="exa --icons --group-directories-first"
+  alias ls="exa --icons --group-directories-first --group"
 fi
 if command -v bat &> /dev/null; then
   alias cat="bat"

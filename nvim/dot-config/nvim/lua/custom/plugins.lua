@@ -58,7 +58,9 @@ local plugins = {
   },
   {
     "simrat39/symbols-outline.nvim",
-    lazy = false,
+    keys = {
+      { "<F8>", "<cmd>SymbolsOutline<CR>", "Show symbols outline" },
+    },
     config = function()
       require "custom.configs.symbols-outline"
       require("symbols-outline").setup()
@@ -72,8 +74,40 @@ local plugins = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
     },
+    keys = {
+      { "<leader>a",  "<cmd>AerialToggle!<CR>",    "Toggle Aerial" },
+      { "<leader>fx", "<cmd>Telescope aerial<CR>", "Search Outline" },
+    },
     config = function()
       require("aerial").setup {
+        backends = { "lsp", "treesitter" },
+        filter_kind = {
+          "Array",
+          "Boolean",
+          "Class",
+          "Constant",
+          "Constructor",
+          "Enum",
+          "EnumMember",
+          "Event",
+          "Field",
+          "File",
+          "Function",
+          "Interface",
+          "Key",
+          "Method",
+          "Module",
+          "Namespace",
+          "Number",
+          "Object",
+          "Operator",
+          "Package",
+          "Property",
+          "String",
+          "Struct",
+          "TypeParameter",
+          "Variable",
+        },
         -- optionally use on_attach to set keymaps when aerial has attached to a buffer
         on_attach = function(bufnr)
           -- Jump forwards/backwards with '{' and '}'
@@ -81,10 +115,7 @@ local plugins = {
           vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
         end,
       }
-      -- You probably also want to set a keymap to toggle aerial
-      vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
     end,
-    lazy = false,
   },
   {
     "junegunn/fzf",
@@ -125,10 +156,40 @@ local plugins = {
     end,
     ft = { "rust", "python", "c", "cpp", "java", "js" },
   },
-
   {
     "MunifTanjim/prettier.nvim",
-    lazy = false,
+    config = function()
+      local prettier = require "prettier"
+      prettier.setup {
+        ["null-ls"] = {
+          condition = function()
+            return prettier.config_exists {
+              -- if `false`, skips checking `package.json` for `"prettier"` key
+              check_package_json = true,
+            }
+          end,
+          runtime_condition = function(params)
+            -- return false to skip running prettier
+            return true
+          end,
+          timeout = 5000,
+        },
+        filetypes = {
+          "css",
+          "graphql",
+          "html",
+          "javascript",
+          "javascriptreact",
+          "json",
+          "less",
+          "markdown",
+          "scss",
+          "typescript",
+          "typescriptreact",
+          "yaml",
+        },
+      }
+    end,
   },
   {
     "lervag/vimtex",
@@ -165,11 +226,11 @@ local plugins = {
     -- dir = "~/Documents/dev/neovim/Arduino.nvim",
   },
   {
-    "dapt4/vim-autoSurround",
-    lazy = true,
+    "tpope/vim-surround",
+    lazy = false,
   },
   {
-    "tpope/vim-surround",
+    "tpope/vim-repeat",
     lazy = false,
   },
   {
@@ -206,22 +267,22 @@ local plugins = {
     end,
   },
   {
-  "christoomey/vim-tmux-navigator",
-  cmd = {
-    "TmuxNavigateLeft",
-    "TmuxNavigateDown",
-    "TmuxNavigateUp",
-    "TmuxNavigateRight",
-    "TmuxNavigatePrevious",
+    "christoomey/vim-tmux-navigator",
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+    },
+    keys = {
+      { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+    },
   },
-  keys = {
-    { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-    { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-    { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-    { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-    { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-  },
-},
   {
     "vim-test/vim-test",
     dependencies = {
