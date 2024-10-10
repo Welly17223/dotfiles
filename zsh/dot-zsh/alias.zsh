@@ -24,7 +24,7 @@ dot=...
 dir=../..
 
 for _ in {1..15}; do
-  alias $dot="cd $dir"
+  alias $dot="$dir"
   dot=$dot.
   dir=$dir/..
 done

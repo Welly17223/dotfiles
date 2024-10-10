@@ -17,7 +17,7 @@ end
 lspconfig.yamlls.setup {}
 -- lspconfig.pyright.setup {}
 lspconfig.bashls.setup {
-  filetypes = { "sh", "zsh" },
+  filetypes = { "zsh" },
 }
 lspconfig.jdtls.setup {
   cmd = { "jdtls" },
