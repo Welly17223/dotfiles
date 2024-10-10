@@ -363,6 +363,15 @@ local plugins = {
     end,
     ft = { "sh" },
   },
+    "TheLeoP/powershell.nvim",
+    ---@type powershell.user_config
+    opts = {
+      bundle_path = "/home/welly/Downloads/powershell/PowerShellEditorServices/",
+      init_options = { "-SessionDetailsPath ./session.json" },
+    },
+    ft = { "ps1" },
+  },
+  { "echasnovski/mini.icons", version = "*" },
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
