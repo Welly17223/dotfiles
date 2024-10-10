@@ -33,7 +33,7 @@ dap.adapters.codelldb = {
 dap.configurations.cpp = {
   {
     name = "Launch file",
-    type = "gdb",
+    type = "codelldb",
     request = "launch",
     program = function()
       return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")

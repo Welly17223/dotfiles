@@ -175,7 +175,7 @@ M.general = {
   v = {
     -- [";"] = {"<cmd>"},
     ["<A-j>"] = { "<cmd>'<,'>move '>+1<CR>gv" },
-    ["<A-k>"] = { "<cmd>'<,'>move '<-2<CR>gv" },
+    ["<A-k>"] = { "<cmd>'<,'>move '<-1<CR>gv" },
   },
 
   i = {
