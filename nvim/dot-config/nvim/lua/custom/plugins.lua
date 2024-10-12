@@ -363,6 +363,7 @@ local plugins = {
     end,
     ft = { "sh" },
   },
+  {
     "TheLeoP/powershell.nvim",
     ---@type powershell.user_config
     opts = {

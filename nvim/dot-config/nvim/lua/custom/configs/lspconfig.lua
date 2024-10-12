@@ -32,7 +32,7 @@ lspconfig.verible.setup {
 }
 
 lspconfig.clangd.setup {
-  filetypes = { "c", "cpp", "objc", "objcpp", "cc", "arduino" },
+  filetypes = { "c", "cpp", "objc", "objcpp", "cc" },
 }
 
 lspconfig.arduino_language_server.setup {}
