@@ -1,0 +1,46 @@
+{
+  "Template": {
+    "prefix": "NewProject",
+    "body": [
+      "\\documentclass{article}",
+      "\\usepackage{graphicx} % Required for inserting images",
+      "\\usepackage{enumerate}",
+      "\\usepackage{amsmath,amssymb,amsthm}",
+      "\\usepackage{longdivision}",
+      "\\usepackage{mathalpha}",
+      "\\usepackage{scalerel}",
+      "\\usepackage{stackengine}",
+      "\\usepackage{xcolor}",
+      "\\usepackage{cancel}",
+      "\\usepackage{tikz}",
+      "\\usepackage{pgfplots}",
+      "\\usepackage[english]{babel}",
+      "\\usepackage[margin=0.5in]{geometry}",
+      "\\usetikzlibrary{calc}",
+      "\\newtheorem{theorem}{Theorem}[section]",
+      "\\newtheorem{lemma}[theorem]{Lemma}",
+      "\\newcommand\\showdiv[1]{\\overline{\\smash{\\hstretch{.5}{)}\\mkern-3.2mu\\hstretch{.5}{)}}#1}}",
+      "\\let\\ph\\phantom",
+      "",
+      "\\newenvironment{problem}[2][Problem]{\\begin{trivlist}",
+        "\\item[\\hskip \\labelsep \\Large{\\bfseries #1}\\hskip \\labelsep {\\bfseries #2.}]}",
+        "{\\end{trivlist}}",
+        "",
+        "",
+        "",
+        "\\title{Differential equation HW4}",
+        "\\author{ID:112550172}",
+        "% \\renewcommand{\\maketitlehookb}{\\centering ID:112550172}",
+        "\\setcounter{secnumdepth}{0}",
+        "\\begin{document}",
+        "\\maketitle",
+        "",
+        "\\end{document}"
+    ],
+    "description": "default load template",
+
+    "luasnip": {
+      "priority": 2000
+    }
+  }
+}

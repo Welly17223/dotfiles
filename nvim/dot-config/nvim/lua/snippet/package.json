@@ -29,7 +29,7 @@
       },
       {
         "language": [
-          "latex"
+          "tex"
         ],
         "path": "./snippets/tex.json"
       }

@@ -1,6 +1,6 @@
 {
   "Printvar": {
-    "prefix": "printvar",
+    "prefix": "pvar",
     "body": ["printf(\"$1 = %${2|d,s,f,lld|}\", ${1:var}$3);"],
     "description": "default load template",
     "luasnip": {
@@ -16,7 +16,7 @@
   "for loop": {
     "prefix": "for",
     "body": [
-      "for(${1:int} ${2:i}; $2 < len; $2++) {",
+      "for(${1:int} ${2:i}; $2 < ${3:len}; $2++) {",
       "\t$0",
       "}"
     ],
