@@ -21,8 +21,8 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     keys = {
-      { "<leader>a", "<cmd>AerialToggle!<CR>", "Toggle Aerial" },
-      { "<leader>fx", "<cmd>Telescope aerial<CR>", "Search Outline" },
+      { "<leader>a", "<cmd>AerialToggle!<CR>", desc = "Toggle Aerial" },
+      { "<leader>fx", "<cmd>Telescope aerial<CR>", desc = "Search Outline" },
     },
     config = function()
       require "configs.aerial"
@@ -109,10 +109,10 @@ return {
       "TmuxNavigatePrevious",
     },
     keys = {
-      { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
@@ -124,7 +124,7 @@ return {
       },
     },
     config = function()
-			require "configs.nvim-ufo"
+      require "configs.nvim-ufo"
     end,
     lazy = false,
 
@@ -139,12 +139,22 @@ return {
       -- Configuration goes here.
       local g = vim.g
 
-      g.ale_sh_shellcheck_executable='shellcheck'
+      g.ale_sh_shellcheck_executable = "shellcheck"
       g.ale_linters = {
         sh = { "shellcheck" },
       }
     end,
     ft = { "sh" },
+  },
+  {
+    "karb94/neoscroll.nvim",
+    opts = {
+      easing = "sine",
+      post_hook = function(info)
+        require("neoscroll").zz({ half_win_duration = 50 })
+      end,
+    },
+    lazy = false,
   },
 
   -- {
