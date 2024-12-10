@@ -54,6 +54,9 @@ return {
   {
     "lervag/vimtex",
     ft = { "tex" }, -- lazy-loading will disable inverse search
+    cmd = {
+      "VimtexInverseSearch"
+    },
     config = function()
       require "configs.vimtex"
     end,
