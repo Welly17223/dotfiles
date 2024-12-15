@@ -159,6 +159,14 @@ return {
     },
     lazy = false,
   },
+  {
+    "rcarriga/nvim-notify",
+    config = function ()
+      vim.notify = require("notify")
+    end,
+    lazy = false,
+    opts = {},
+  },
 
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
