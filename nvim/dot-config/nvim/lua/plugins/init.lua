@@ -167,6 +167,16 @@ return {
     lazy = false,
     opts = {},
   },
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup()
+    end,
+  },
+  {
+    "tpope/vim-fugitive",
+    lazy = false,
+  }
 
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
