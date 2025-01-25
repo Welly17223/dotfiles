@@ -55,7 +55,7 @@ return {
     "lervag/vimtex",
     ft = { "tex" }, -- lazy-loading will disable inverse search
     cmd = {
-      "VimtexInverseSearch"
+      "VimtexInverseSearch",
     },
     config = function()
       require "configs.vimtex"
@@ -154,16 +154,16 @@ return {
     opts = {
       easing = "sine",
       post_hook = function(info)
-        require("neoscroll").zz({ half_win_duration = 50 })
+        require("neoscroll").zz { half_win_duration = 50 }
       end,
     },
     lazy = false,
   },
   {
     "rcarriga/nvim-notify",
-    config = function ()
+    config = function()
       require("notify").setup()
-      vim.notify = require("notify")
+      vim.notify = require "notify"
     end,
     lazy = false,
     opts = {},
@@ -177,7 +177,31 @@ return {
   {
     "tpope/vim-fugitive",
     lazy = false,
-  }
+  },
+  {
+    "tpope/vim-unimpaired",
+    lazy = false,
+  },
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    ---@type Flash.Config
+    opts = {
+      modes = {
+        char = {
+          jump_labels = true,
+        },
+      },
+    },
+  -- stylua: ignore
+  keys = {
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+    },
+  },
 
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",

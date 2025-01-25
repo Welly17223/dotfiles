@@ -9,7 +9,7 @@ M.base46 = {
   theme = "tokyodark",
 
   hl_override = {
-    Comment = { italic = true },
+    ["@comment"] = { italic = true },
     CursorLine = {
       underline = true,
     },
@@ -17,6 +17,12 @@ M.base46 = {
       bold = true,
     },
     -- ["@comment"] = { italic = true },
+  },
+  hl_add = {
+    -- -@type Flash.Config
+    FlashLabel = {
+      bg = "#b30000",
+    },
   },
 }
 
