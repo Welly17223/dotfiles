@@ -4,20 +4,8 @@ require("nvchad.configs.lspconfig").defaults()
 local lspcg = require "lspconfig"
 
 -- EXAMPLE
-local servers = { "html", "cssls", "ltex", "texlab", "pyright", "cmake", "arduino_language_server" }
-local servers = { "html", "cssls", "ltex", "texlab", "pyright", "cmake", "lwc-language-server", "lemminx" }
+local servers = { "html", "cssls", "ltex", "texlab", "pyright", "cmake", "lwc-language-server", "lemminx","arduino_language_server"  }
 local nvlsp = require "nvchad.configs.lspconfig"
-
-local on_attach = function(client, bufnr)
-  local map = vim.keymap.set
-  local nomap = vim.keymap.del
-  local function opts(desc)
-    return { buffer = bufnr, desc = "LSP " .. desc }
-  end
-
-  nomap "i"
-  map("i", "<C-h>", vim.lsp.buf.signature_help(), opts "Show signature help")
-end
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
