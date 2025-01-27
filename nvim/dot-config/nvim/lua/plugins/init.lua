@@ -40,16 +40,8 @@ return {
 
   {
     "mrcjkb/rustaceanvim",
-    version = "^3",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "mfussenegger/nvim-dap",
-      {
-        "lvimuser/lsp-inlayhints.nvim",
-        opts = {},
-      },
-    },
-    ft = { "rust" },
+    version = "^5", -- Recommended
+    lazy = false, -- This plugin is already lazy
   },
   {
     "lervag/vimtex",
@@ -70,30 +62,20 @@ return {
     lazy = false,
   },
   {
+
     "CopilotC-Nvim/CopilotChat.nvim",
     dependencies = {
-      { "github/copilot.vim" }, -- or github/copilot.vim
-      { "nvim-lua/plenary.nvim" },
+      { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
     },
+    build = "make tiktoken", -- Only on MacOS or Linux
     opts = {
-      debug = true, -- Enable debugging
-      -- See Configuration section for rest
+      -- See Configuration section for options
     },
     keys = {
-      {
-        "<leader>ccq",
-        function()
-          local input = vim.fn.input "Quick Chat: "
-          if input ~= "" then
-            require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
-          end
-        end,
-        desc = "CopilotChat - Quick chat",
-      },
-      { "<leader>cct", ":CopilotChatToggle<CR>", "Toggle copilot chat window" },
+      { "<leader>ccq", "<cmd>CopilotChatToggle<cr>", "Toggle copilog chat" },
     },
     -- See Commands section for default commands if you want to lazy load on them
-    lazy = false,
   },
   {
     "mhinz/vim-startify",
