@@ -18,3 +18,17 @@ o.foldmethod = "expr"
 o.foldexpr = "nvim_treesitter#foldexpr()"
 o.foldlevel = 99
 o.termguicolors = true
+
+vim.g.clipboard = {
+  name = 'wslClipboard',
+  copy = {
+    ["+"] = "clip.exe",
+    ["*"] = "clip.exe"
+  },
+  paste = {
+    ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).toString().replace("\r", "))',
+    ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).toString().replace("\r", "))',
+  },
+  cache_enabled = 0
+}
+

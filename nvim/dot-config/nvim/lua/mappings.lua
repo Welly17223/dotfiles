@@ -17,5 +17,6 @@ map("n", "<a-k>", "<cmd> move -2<CR>", { desc = "Move line down" })
 map("v", "<a-j>", "<cmd>'<'> move '>+1<CR>gv", { desc = "Move line down" })
 map("v", "<a-k>", "<cmd>'<'> move '<-2<CR>gv", { desc = "Move line down" })
 
+map("n", "<leader>q", "<cmd>wincmd q<cr>", { desc = "Close current window" })
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
