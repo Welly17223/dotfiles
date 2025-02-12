@@ -5,7 +5,6 @@ FZF_BASE="~/Downloads/fzf/bin/"
 # environment variables
 export QT_QPA_PLATFORMTHEME=kde
 export EDITOR="nvim"
-export PATH=$PATH:/usr/local/textlive/2024/bin/x86_64-linux/:~/.local/bin/:~/go/bin/
 
 # Check if tmux plugin manager is installed
 if [[ ! -d ~/.tmux/plugins/tpm ]]; then
@@ -13,13 +12,13 @@ if [[ ! -d ~/.tmux/plugins/tpm ]]; then
 fi
 
 # some settings
-source $HOME/.profile
-source $HOME/.zsh/plugin.zsh
-source $HOME/.zsh/alias.zsh
-source $HOME/.zsh/opt.zsh
-source $HOME/.zsh/completion.zsh
-source $HOME/.cargo/env
+[ -f $HOME/.profile ] && source $HOME/.profile 
+[ -f $HOME/.zsh/plugin.zsh ] && source $HOME/.zsh/plugin.zsh 
+[ -f $HOME/.zsh/alias.zsh ] && source $HOME/.zsh/alias.zsh 
+[ -f $HOME/.zsh/opt.zsh ] && source $HOME/.zsh/opt.zsh 
+[ -f $HOME/.zsh/completion.zsh ] && source $HOME/.zsh/completion.zsh 
+[ -f $HOME/.cargo/env ] && source $HOME/.cargo/env 
 
 # some tools
 [ -f ~/.zsh/.fzf.zsh ] && source ~/.zsh/.fzf.zsh
-eval $(thefuck --alias)
+command thefuck 2> /dev/null && eval $(thefuck --alias)
