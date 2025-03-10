@@ -5,7 +5,7 @@ vim.g.vscode_snippets_path = "~/.config/nvim/lua/snippet/"
 -- add yours here!
 
 local o = vim.o
-o.cursorlineopt ='both' -- to enable cursorline!
+o.cursorlineopt = "both" -- to enable cursorline!
 --
 o.tabstop = 2
 o.softtabstop = 2
@@ -18,4 +18,17 @@ o.foldmethod = "expr"
 o.foldexpr = "nvim_treesitter#foldexpr()"
 o.foldlevel = 99
 o.termguicolors = true
+o.breakindent = true
 
+local function set_dynamic_scrolloff()
+  local height = vim.api.nvim_win_get_height(0) -- 取得目前視窗的高度
+  vim.opt.scrolloff = math.floor(height * 0.2) -- 設定 scrolloff 為 20% 的視窗高度
+end
+
+-- 在視窗大小改變時重新計算 scrolloff
+vim.api.nvim_create_autocmd("VimResized", {
+  callback = set_dynamic_scrolloff,
+})
+
+-- 在啟動時設定 scrolloff
+set_dynamic_scrolloff()
