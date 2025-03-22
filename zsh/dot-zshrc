@@ -13,9 +13,9 @@ fi
 
 # some settings
 [ -f $HOME/.profile ] && source $HOME/.profile 
+[ -f $HOME/.zsh/opt.zsh ] && source $HOME/.zsh/opt.zsh 
 [ -f $HOME/.zsh/plugin.zsh ] && source $HOME/.zsh/plugin.zsh 
 [ -f $HOME/.zsh/alias.zsh ] && source $HOME/.zsh/alias.zsh 
-[ -f $HOME/.zsh/opt.zsh ] && source $HOME/.zsh/opt.zsh 
 [ -f $HOME/.zsh/completion.zsh ] && source $HOME/.zsh/completion.zsh 
 [ -f $HOME/.cargo/env ] && source $HOME/.cargo/env 
 

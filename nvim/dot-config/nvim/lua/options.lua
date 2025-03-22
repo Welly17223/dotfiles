@@ -22,7 +22,7 @@ o.breakindent = true
 
 local function set_dynamic_scrolloff()
   local height = vim.api.nvim_win_get_height(0) -- 取得目前視窗的高度
-  vim.opt.scrolloff = math.floor(height * 0.2) -- 設定 scrolloff 為 20% 的視窗高度
+  vim.opt.scrolloff = math.floor(height * 0.1) -- 設定 scrolloff 為 20% 的視窗高度
 end
 
 -- 在視窗大小改變時重新計算 scrolloff

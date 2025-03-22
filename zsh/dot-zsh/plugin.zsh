@@ -15,6 +15,10 @@ bindkey '^[OA' history-substring-search-up
 bindkey '^[[A' history-substring-search-up
 bindkey '^[OB' history-substring-search-down
 bindkey '^[[B' history-substring-search-down
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+HISTORY_SUBSTRING_SEARCH_PREFIXED=1
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zdharma/fast-syntax-highlighting"
