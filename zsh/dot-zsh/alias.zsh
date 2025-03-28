@@ -33,6 +33,8 @@ unset dot dir
 
 tre() { command tre "$@" -e && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
 
+alias ip="ip -c"
+
 # git aliases
 alias gs="git status"
 alias ga="git add"
