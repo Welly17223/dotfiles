@@ -19,6 +19,10 @@ o.foldexpr = "nvim_treesitter#foldexpr()"
 o.foldlevel = 99
 o.termguicolors = true
 o.breakindent = true
+o.autoread = true
+o.linebreak = true
+o.lazyredraw = true
+o.confirm = true
 
 local function set_dynamic_scrolloff()
   local height = vim.api.nvim_win_get_height(0) -- 取得目前視窗的高度
