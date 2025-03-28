@@ -4,7 +4,7 @@ require("nvchad.configs.lspconfig").defaults()
 local lspcg = require "lspconfig"
 
 -- EXAMPLE
-local servers = { "html", "cssls", "ltex", "texlab", "cmake", "lemminx","arduino_language_server", "pylsp", "asm_lsp"  }
+local servers = { "html", "cssls", "ltex", "texlab", "cmake", "lemminx","arduino_language_server", "pylsp", "asm_lsp", "ts_ls"  }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config
