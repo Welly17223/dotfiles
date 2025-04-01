@@ -36,3 +36,9 @@ vim.api.nvim_create_autocmd("VimResized", {
 
 -- 在啟動時設定 scrolloff
 set_dynamic_scrolloff()
+
+vim.diagnostic.config{
+  virtual_lines = {
+    current_line = true
+  }
+}
