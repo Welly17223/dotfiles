@@ -29,11 +29,6 @@ return {
     end,
   },
   {
-    "junegunn/fzf",
-    lazy = false,
-  },
-
-  {
     "junegunn/fzf.vim",
     lazy = false,
   },

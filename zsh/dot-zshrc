@@ -17,6 +17,7 @@ fi
 [ -f $HOME/.zsh/alias.zsh ] && source $HOME/.zsh/alias.zsh 
 [ -f $HOME/.zsh/completion.zsh ] && source $HOME/.zsh/completion.zsh 
 [ -f $HOME/.cargo/env ] && source $HOME/.cargo/env 
+[ -d $HOME/.atuin ] && source $HOME/.zsh/atuin.zsh
 
 # some tools
 [ -f ~/.zsh/.fzf.zsh ] && source ~/.zsh/.fzf.zsh

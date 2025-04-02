@@ -4,7 +4,7 @@ require("nvchad.configs.lspconfig").defaults()
 local lspcg = require "lspconfig"
 
 -- EXAMPLE
-local servers = { "html", "cssls", "ltex", "texlab", "cmake", "lemminx","arduino_language_server", "pylsp", "asm_lsp", "ts_ls"  }
+local servers = { "html", "cssls", "ltex", "texlab", "cmake", "lemminx", "pylsp", "asm_lsp", "ts_ls", "clangd" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config
@@ -30,9 +30,14 @@ lspcg.bashls.setup {
   filetypes = { "sh", "bash", "zsh" },
 }
 
-lspcg.clangd.setup {
-  on_attach = nvlsp.on_attach,
-  on_init = nvlsp.on_init,
-  capabilities = nvlsp.capabilities,
-  filetypes = { "c", "cpp", "objc", "objcpp" },
+lspcg.arduino_language_server.setup {
+  cmd = {
+    vim.fn.expand "~/.local/share/nvim/mason/bin/arduino-language-server",
+    "-clangd",
+    "clangd",
+    "-cli",
+    "/usr/bin/arduino-cli",
+    "-cli-config",
+    vim.fn.expand "~/.arduino15/arduino-cli.yaml",
+  },
 }
