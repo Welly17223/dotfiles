@@ -1,3 +1,4 @@
+# zmodload zsh/zprof
 # path
 fpath=($HOME/.zsh_completion $fpath)
 
@@ -22,3 +23,5 @@ command thefuck 2> /dev/null && eval "$(thefuck --alias)"
 [ -f "$HOME/.zsh/completion.zsh" ] && source "$HOME/.zsh/completion.zsh" 
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env" 
 [ -d "$HOME/.atuin" ] && source "$HOME/.zsh/atuin.zsh"
+
+# zprof
