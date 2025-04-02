@@ -1,6 +1,6 @@
+# zmodload zsh/zprof
 # path
 fpath=($HOME/.zsh_completion $fpath)
-FZF_BASE="~/Downloads/fzf/bin/"
 
 # environment variables
 export QT_QPA_PLATFORMTHEME=kde
@@ -11,15 +11,17 @@ if [[ ! -d ~/.tmux/plugins/tpm ]]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
-# some settings
-[ -f $HOME/.profile ] && source $HOME/.profile 
-[ -f $HOME/.zsh/opt.zsh ] && source $HOME/.zsh/opt.zsh 
-[ -f $HOME/.zsh/plugin.zsh ] && source $HOME/.zsh/plugin.zsh 
-[ -f $HOME/.zsh/alias.zsh ] && source $HOME/.zsh/alias.zsh 
-[ -f $HOME/.zsh/completion.zsh ] && source $HOME/.zsh/completion.zsh 
-[ -f $HOME/.cargo/env ] && source $HOME/.cargo/env 
-[ -d $HOME/.atuin ] && source $HOME/.zsh/atuin.zsh
-
 # some tools
-[ -f ~/.zsh/.fzf.zsh ] && source ~/.zsh/.fzf.zsh
-command thefuck 2> /dev/null && eval $(thefuck --alias)
+[ -f ~/.zsh/.fzf.zsh ] && source "$HOME/.zsh/.fzf.zsh"
+command thefuck 2> /dev/null && eval "$(thefuck --alias)"
+
+# some settings
+[ -f "$HOME/.profile" ] && source "$HOME/.profile" 
+[ -f "$HOME/.zsh/opt.zsh" ] && source "$HOME/.zsh/opt.zsh" 
+[ -f "$HOME/.zsh/plugin.zsh" ] && source "$HOME/.zsh/plugin.zsh" 
+[ -f "$HOME/.zsh/alias.zsh" ] && source "$HOME/.zsh/alias.zsh" 
+[ -f "$HOME/.zsh/completion.zsh" ] && source "$HOME/.zsh/completion.zsh" 
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env" 
+[ -d "$HOME/.atuin" ] && source "$HOME/.zsh/atuin.zsh"
+
+# zprof
