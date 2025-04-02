@@ -41,8 +41,6 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -a -1 --color=always $realpath'
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 # switch group using `<` and `>`
 zstyle ':fzf-tab:*' switch-group '<' '>'
-# use to attach named tmux session
-zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 # zsh-history-substring-search config
 bindkey '^[OA' history-substring-search-up
