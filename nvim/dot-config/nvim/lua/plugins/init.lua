@@ -184,6 +184,32 @@ return {
       { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
   },
+  {
+    "anurag3301/nvim-platformio.lua",
+    dependencies = {
+      { "akinsho/nvim-toggleterm.lua" },
+      { "nvim-telescope/telescope.nvim" },
+      { "nvim-lua/plenary.nvim" },
+    },
+    config = function()
+      require("platformio").setup {
+        lsp = "clangd", --default: ccls, other option: clangd
+        -- If you pick clangd, it also creates compile_commands.json
+      }
+    end,
+    cmd = {
+      "Pioinit",
+      "Piorun",
+      "Piocmd",
+      "Piolib",
+      "Piomon",
+      "Piodebug",
+      "Piodb",
+    },
+  },
+  {
+    'normen/vim-pio',
+  }
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {

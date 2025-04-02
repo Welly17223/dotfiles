@@ -1,6 +1,5 @@
 # path
 fpath=($HOME/.zsh_completion $fpath)
-FZF_BASE="~/Downloads/fzf/bin/"
 
 # environment variables
 export QT_QPA_PLATFORMTHEME=kde
