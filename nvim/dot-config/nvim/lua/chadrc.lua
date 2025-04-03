@@ -11,6 +11,11 @@ M.base46 = {
   hl_override = {
     ["@comment"] = { italic = true },
     CursorLine = {
+      bg = {
+        "black",
+        "blue",
+        8
+      }
     },
     Cursor = {
       bold = true,
