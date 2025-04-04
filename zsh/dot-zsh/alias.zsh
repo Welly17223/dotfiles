@@ -19,12 +19,13 @@ alias adi="arduino-cli"
 alias adib="arduino-cli board"
 alias adic="arduino-cli core"
 alias adil="arduino-cli lib"
+alias egrep="grep -E"
 
 dot=...
 dir=../..
 
 for _ in {1..15}; do
-  alias $dot="$dir"
+  alias -g $dot="$dir"
   dot=$dot.
   dir=$dir/..
 done

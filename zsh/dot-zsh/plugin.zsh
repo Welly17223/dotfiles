@@ -7,6 +7,9 @@ zinit ice depth"1" as"theme" lucid; zinit light romkatv/powerlevel10k
 # zinit ice wait depth"1" lucid; zinit light zsh-users/zsh-completions
 
 zinit wait lucid for \
+  OMZ::plugins/ssh/ssh.plugin.zsh \
+  OMZ::plugins/kitty/kitty.plugin.zsh \
+  OMZ::plugins/sudo/sudo.plugin.zsh \
     light-mode \
   zsh-users/zsh-history-substring-search \
    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
@@ -18,7 +21,7 @@ zinit wait lucid for \
   Aloxaf/fzf-tab \
   zpm-zsh/ls \
   agkozak/zsh-z \
-  MichaelAquilina/zsh-you-should-use
+  MichaelAquilina/zsh-you-should-use 2> /dev/null
 
 # fzf-tab config
 # disable sort when completing `git checkout`
