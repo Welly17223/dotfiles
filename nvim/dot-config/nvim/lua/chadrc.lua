@@ -14,8 +14,8 @@ M.base46 = {
       bg = {
         "black",
         "blue",
-        8
-      }
+        8,
+      },
     },
     Cursor = {
       bold = true,
@@ -33,6 +33,10 @@ M.base46 = {
 M.ui = {
   statusline = {
     separator_style = "round",
+  },
+  cmp = {
+    icons_left = true,
+    style = "flat_light",
   },
 }
 
