@@ -21,7 +21,7 @@ o.termguicolors = true
 o.breakindent = true
 o.autoread = true
 o.linebreak = true
-o.lazyredraw = true
+-- o.lazyredraw = true
 o.confirm = true
 
 local function set_dynamic_scrolloff()
