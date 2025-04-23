@@ -11,4 +11,9 @@ local unmap = vim.keymap.del
 
 map("n", "<leader>q", "<cmd>wincmd q<cr>", { desc = "Close current window" })
 
+unmap({ "n", "t" }, "<A-h>")
+map({ "n", "t" }, "<A-f>", function()
+  require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
+end, { desc = "terminal toggleable horizontal term" })
+
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
