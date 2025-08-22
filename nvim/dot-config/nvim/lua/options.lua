@@ -8,8 +8,8 @@ local o = vim.o
 o.cursorlineopt = "both" -- to enable cursorline!
 --
 o.tabstop = 8
-o.softtabstop = 4
-o.shiftwidth = 4
+o.softtabstop = 8
+o.shiftwidth = 8
 o.expandtab = true
 o.autoindent = true
 o.smartindent = true
