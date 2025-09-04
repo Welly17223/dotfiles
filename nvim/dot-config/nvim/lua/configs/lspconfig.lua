@@ -4,7 +4,7 @@ require("nvchad.configs.lspconfig").defaults()
 local lspcg = require "lspconfig"
 
 -- EXAMPLE
-local servers = { "html", "cssls", "ltex", "texlab", "cmake", "lemminx", "pylsp", "asm_lsp", "clangd", "volar" }
+local servers = { "html", "cssls", "ltex_plus", "texlab", "cmake", "lemminx", "pylsp", "asm_lsp", "clangd", "volar" } --, "ansiblels" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config
@@ -22,9 +22,6 @@ end
 --   on_init = nvlsp.on_init,
 --   capabilities = nvlsp.capabilities,
 -- }
-lspcg.grammarly.setup {
-  filetypes = { "markdown", "tex" },
-}
 
 lspcg.bashls.setup {
   filetypes = { "sh", "bash", "zsh" },
