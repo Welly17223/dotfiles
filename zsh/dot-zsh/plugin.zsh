@@ -46,6 +46,9 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes
 # switch group using `<` and `>`
 zstyle ':fzf-tab:*' switch-group '<' '>'
 
+# fzf-tab keybinds
+zstyle ':fzf-tab:*' fzf-bindings 'ctrl-j:accept' 'ctrl-a:toggle-all' 'alt-space:toggle'
+
 # zsh-history-substring-search config
 bindkey '^[OA' history-substring-search-up
 bindkey '^[[A' history-substring-search-up
