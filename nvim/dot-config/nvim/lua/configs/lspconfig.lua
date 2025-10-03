@@ -2,7 +2,7 @@
 require("nvchad.configs.lspconfig").defaults()
 
 -- EXAMPLE
-local servers = { "html", "cssls", "ltex_plus", "texlab", "cmake", "lemminx", "pylsp", "asm_lsp", "clangd", "volar" } --, "ansiblels" }
+local servers = { "html", "cssls", "ltex_plus", "texlab", "cmake", "lemminx", "pylsp", "asm_lsp", "clangd", "vue_ls" } --, "ansiblels" }
 
 -- lsps with default config
 vim.lsp.enable(servers)
@@ -21,7 +21,7 @@ vim.lsp.config( "bashls", {
   filetypes = { "sh", "bash", "zsh" },
 })
 
-vim.lsp.config( "volar", {
+vim.lsp.config( "vue_ls", {
   settings = {
     typescript = {
       inlayHints = {
