@@ -2,8 +2,7 @@
 require("nvchad.configs.lspconfig").defaults()
 
 -- EXAMPLE
-local servers = { "html", "cssls", "ltex", "texlab", "cmake", "lemminx", "pylsp", "asm_lsp", "clangd", "volar" }
-local nvlsp = require "nvchad.configs.lspconfig"
+local servers = { "html", "cssls", "ltex_plus", "texlab", "cmake", "lemminx", "pylsp", "asm_lsp", "clangd", "volar" } --, "ansiblels" }
 
 -- lsps with default config
 vim.lsp.enable(servers)

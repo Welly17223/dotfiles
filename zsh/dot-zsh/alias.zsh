@@ -21,6 +21,10 @@ alias adic="arduino-cli core"
 alias adil="arduino-cli lib"
 alias egrep="grep -E"
 
+if command -v kubectl &> /dev/null; then
+        alias  k="kubectl"
+fi
+
 dot=...
 dir=../..
 
