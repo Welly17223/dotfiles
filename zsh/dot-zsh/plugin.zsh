@@ -21,6 +21,7 @@ zinit wait lucid for \
   Aloxaf/fzf-tab \
   zpm-zsh/ls \
   agkozak/zsh-z \
+  Freed-Wu/fzf-tab-source \
   MichaelAquilina/zsh-you-should-use 2> /dev/null
 
 # fzf-tab config
@@ -34,9 +35,11 @@ zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
 zstyle ':completion:*' menu no
+export LESSOPEN="|${HOME}/.zsh/preview.zsh %s"
 # preview directory's content with eza when completing cd
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -a -1 --color=always --icons=always $realpath'
-zstyle ':fzf-tab:complete:nvim:*' fzf-preview '[ -d $realpath ] && eza -a -1 --color=always $realpath || head --lines=50 $realpath'
+# zstyle ':fzf-tab:complete:nvim:*' fzf-preview '[ -d $realpath ] && eza -a -1 --color=always $realpath || head --lines=50 $realpath'
+zstyle ':fzf-tab:complete:nvim:*' fzf-preview "${HOME}/.zsh/preview.zsh \$realpath"
 # custom fzf flags
 # NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS by default
 # zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
@@ -46,14 +49,8 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes
 # switch group using `<` and `>`
 zstyle ':fzf-tab:*' switch-group '<' '>'
 
-# give a preview of commandline arguments when completing `kill`
-zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
-zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview \
-  '[[ $group == "[process ID]" ]] && ps --pid=$word -o cmd --no-headers -w -w'
-zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags --preview-window=down:3:wrap
-
-zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
-zstyle ':fzf-tab:*' fzf-bindings 'ctrl-j:accept' 'ctrl-a:toggle-all'
+# fzf-tab keybinds
+zstyle ':fzf-tab:*' fzf-bindings 'ctrl-j:accept' 'ctrl-a:toggle-all' 'alt-space:toggle'
 
 # zsh-history-substring-search config
 bindkey '^[OA' history-substring-search-up
