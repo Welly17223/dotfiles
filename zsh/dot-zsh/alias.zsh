@@ -10,6 +10,7 @@ if command -v exa &> /dev/null; then
 fi
 if command -v bat &> /dev/null; then
   alias cat="bat"
+  export MANPAGER="bat -plman"
 fi
 if command -v tre &> /dev/null; then
   alias tree="tre -c always"
