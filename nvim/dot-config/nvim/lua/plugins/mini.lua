@@ -10,10 +10,10 @@ return {
     version = "*",
     opts = {},
     keys = {
-      { "<M-j>", modes = { "n", "x" } },
-      { "<M-k>", modes = { "n", "x" } },
-      { "<M-l>", modes = { "n", "x" } },
-      { "<M-h>", modes = { "n", "x" } },
+      { "<M-j>", mode = { "n", "v" } },
+      { "<M-k>", mode = { "n", "v" } },
+      { "<M-l>", mode = { "n", "v" } },
+      { "<M-h>", mode = { "n", "v" } },
     },
   },
 }

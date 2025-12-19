@@ -5,6 +5,9 @@ SAVEHIST=100000
 
 bindkey -e
 
+bindkey "^[[1;9D" beginning-of-line # cmd+←
+bindkey "^[[1;9C" end-of-line       # cmd+→
+
 setopt SHARE_HISTORY
 setopt NO_CASE_GLOB
 setopt AUTO_CD
