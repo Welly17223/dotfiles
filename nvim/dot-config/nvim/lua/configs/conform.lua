@@ -4,7 +4,8 @@ local options = {
     latex = { "latexindent" },
     css = { "prettier" },
     html = { "prettier" },
-    xml = { "xmlformatter"}
+    xml = { "xmlformatter"},
+    yaml = { "yamlfmt" }
   },
 
   -- format_on_save = {

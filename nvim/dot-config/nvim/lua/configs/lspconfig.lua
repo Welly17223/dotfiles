@@ -2,9 +2,28 @@
 require("nvchad.configs.lspconfig").defaults()
 
 -- EXAMPLE
-local servers = { "html", "cssls", "ltex_plus", "texlab", "cmake", "lemminx", "pylsp", "asm_lsp", "clangd", "vue_ls" } --, "ansiblels" }
+local servers = {
+  "html",
+  "cssls",
+  "ltex",
+  "texlab",
+  "cmake",
+  "lemminx",
+  "pylsp",
+  "asm_lsp",
+  "clangd",
+  "vue_ls",
+  "sourcekit",
+  "gopls",
+  "kotlin_lsp",
+  "grammarly",
+  "bashls",
+  "vue_ls",
+  "ts_ls",
+  "arduino_language_server",
+  "tinymist",
+} --, "ansiblels" }
 
--- lsps with default config
 vim.lsp.enable(servers)
 
 -- configuring single server, example: typescript
@@ -13,15 +32,20 @@ vim.lsp.enable(servers)
 --   on_init = nvlsp.on_init,
 --   capabilities = nvlsp.capabilities,
 -- }
-vim.lsp.config( "grammarly", {
+vim.lsp.config("grammarly", {
   filetypes = { "markdown", "tex" },
 })
 
-vim.lsp.config( "bashls", {
+vim.lsp.config("bashls", {
   filetypes = { "sh", "bash", "zsh" },
 })
 
-vim.lsp.config( "vue_ls", {
+vim.lsp.config("tinymist", {
+  cmd = { "tinymist" },
+  filetypes = { "typst" },
+})
+
+vim.lsp.config("vue_ls", {
   settings = {
     typescript = {
       inlayHints = {
@@ -46,7 +70,7 @@ vim.lsp.config( "vue_ls", {
   },
 })
 
-vim.lsp.config( "ts_ls", {
+vim.lsp.config("ts_ls", {
   init_options = {
     plugins = {
       {
@@ -80,7 +104,7 @@ vim.lsp.config( "ts_ls", {
   },
 })
 
-vim.lsp.config( "arduino_language_server", {
+vim.lsp.config("arduino_language_server", {
   cmd = {
     vim.fn.expand "~/.local/share/nvim/mason/bin/arduino-language-server",
     "-clangd",

@@ -1,2 +1,3 @@
 *lazy-lock.json
 *.orig
+.DS_Store

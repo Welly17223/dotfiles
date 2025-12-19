@@ -10,6 +10,7 @@ zinit wait lucid for \
   OMZ::plugins/ssh/ssh.plugin.zsh \
   OMZ::plugins/kitty/kitty.plugin.zsh \
   OMZ::plugins/sudo/sudo.plugin.zsh \
+  OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh \
     light-mode \
   zsh-users/zsh-history-substring-search \
    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
