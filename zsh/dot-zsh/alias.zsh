@@ -10,7 +10,8 @@ if command -v exa &> /dev/null; then
 fi
 if command -v bat &> /dev/null; then
   alias cat="bat"
-  export MANPAGER="bat -plman"
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+  export MANROFFOPT="-c"
 fi
 if command -v tre &> /dev/null; then
   alias tree="tre -c always"
