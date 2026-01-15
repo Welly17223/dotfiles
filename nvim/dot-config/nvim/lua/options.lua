@@ -25,8 +25,8 @@ o.cmdheight = 0
 o.showcmdloc = 'statusline'
 -- o.lazyredraw = true
 o.confirm = true
-o.list = true
-o.listchars = "trail:·"
+-- o.list = true
+-- o.listchars = "trail:·"
 
 local function set_dynamic_scrolloff()
   local height = vim.api.nvim_win_get_height(0) -- 取得目前視窗的高度

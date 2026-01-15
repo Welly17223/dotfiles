@@ -10,6 +10,7 @@ M.base46 = {
 
   hl_override = {
     ["@comment"] = { italic = true },
+    Comment = { italic = true },
     CursorLine = {
       bg = {
         "black",
@@ -20,7 +21,6 @@ M.base46 = {
     Cursor = {
       bold = true,
     },
-    -- ["@comment"] = { italic = true },
   },
   hl_add = {
     -- -@type Flash.Config
@@ -28,17 +28,32 @@ M.base46 = {
       bg = "#b30000",
     },
     St_Macro = { fg = "#98c379" },
-    St_Cmd = { fg = "#282828" },
+    St_cmd = { fg = "#a0a8cd" },
   },
 }
 
+local sep_style = "round"
+
 M.ui = {
   statusline = {
-    separator_style = "round",
-    order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "cmd", "macro", "diagnostics", "lsp", "cwd", "cursor" },
+    separator_style = sep_style,
+    order = {
+      "mode",
+      "file",
+      "git",
+      "%=",
+      "lsp_msg",
+      "%=",
+      "cmd",
+      "macro",
+      "diagnostics",
+      "lsp",
+      "cwd",
+      "cursor",
+    },
     modules = {
       cmd = function()
-        return "%#StText# %S "
+        return "%#St_cmd# %S"
       end,
       macro = function()
         local recording_register = vim.fn.reg_recording()
@@ -46,7 +61,7 @@ M.ui = {
         if recording_register == "" then
           return ""
         else
-          return "%#St_Macro#  @" .. recording_register .. " "
+          return "%#St_Macro#   @" .. recording_register
         end
       end,
     },
