@@ -27,12 +27,29 @@ M.base46 = {
     FlashLabel = {
       bg = "#b30000",
     },
+    St_Macro = { fg = "#98c379" },
+    St_Cmd = { fg = "#282828" },
   },
 }
 
 M.ui = {
   statusline = {
     separator_style = "round",
+    order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "cmd", "macro", "diagnostics", "lsp", "cwd", "cursor" },
+    modules = {
+      cmd = function()
+        return "%#StText# %S "
+      end,
+      macro = function()
+        local recording_register = vim.fn.reg_recording()
+
+        if recording_register == "" then
+          return ""
+        else
+          return "%#St_Macro#  @" .. recording_register .. " "
+        end
+      end,
+    },
   },
   cmp = {
     icons_left = true,

@@ -7,9 +7,9 @@ vim.g.vscode_snippets_path = "~/.config/nvim/lua/snippet/"
 local o = vim.o
 o.cursorlineopt = "both" -- to enable cursorline!
 --
-o.tabstop = 8
-o.softtabstop = 8
-o.shiftwidth = 8
+o.tabstop = 4
+o.softtabstop = 4
+o.shiftwidth = 4
 o.expandtab = true
 o.autoindent = true
 o.smartindent = true
@@ -21,8 +21,12 @@ o.termguicolors = true
 o.breakindent = true
 o.autoread = true
 o.linebreak = true
+o.cmdheight = 0
+o.showcmdloc = 'statusline'
 -- o.lazyredraw = true
 o.confirm = true
+o.list = true
+o.listchars = "trail:·"
 
 local function set_dynamic_scrolloff()
   local height = vim.api.nvim_win_get_height(0) -- 取得目前視窗的高度
