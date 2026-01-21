@@ -5,11 +5,12 @@ require("nvchad.configs.lspconfig").defaults()
 local servers = {
   "html",
   "cssls",
-  "ltex",
+  "ltex_plus",
   "texlab",
   "cmake",
   "lemminx",
   -- "pylsp",
+  "ruff",
   "basedpyright",
   "asm_lsp",
   "clangd",
@@ -151,5 +152,11 @@ vim.lsp.config("arduino_language_server", {
     "/usr/bin/arduino-cli",
     "-cli-config",
     vim.fn.expand "~/.arduino15/arduino-cli.yaml",
+  },
+})
+
+vim.lsp.config("tinymist", {
+  settings = {
+    formatterMode = "typstyle",
   },
 })

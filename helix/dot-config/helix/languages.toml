@@ -1,0 +1,22 @@
+[[language]]
+name = "python"
+language-servers = ["ruff", "basedpyright"]
+formatter = {command = "sh", args = ["-c","ruff check --fix - | ruff format -"]}
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+[language-server.basedpyright]
+command = "basedpyright-langserver"
+args = ["--stdio"]
+
+[language-server.basedpyright.config]
+basedpyright.analysis.diagnosticMode = "openFilesOnly"
+
+[language-server.basedpyright.config.basedpyright.analysis.inlayHints]
+variableTypes = true          
+callArgumentNames = true      
+functionReturnTypes = true    
+genericTypes = true           
+pytestParameters = true       

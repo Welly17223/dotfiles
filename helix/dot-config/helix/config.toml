@@ -1,0 +1,21 @@
+theme = "github_dark"
+
+[editor]
+line-number = "relative"
+cursorline = true
+clipboard-provider = "pasteboard"
+auto-format = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.inline-diagnostics]
+cursor-line = "info"
+
+[editor.lsp]
+display-inlay-hints = true
+
+[keys.normal.space]
+m = ":format"

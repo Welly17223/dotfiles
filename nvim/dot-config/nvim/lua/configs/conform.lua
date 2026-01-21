@@ -6,10 +6,10 @@ local options = {
     html = { "prettier" },
     xml = { "xmlformatter" },
     yaml = { "yamlfmt" },
-    python = { "isort", "ruff" },
+    python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+    typst = { "typstyle" },
   },
-  formatters = {
-  },
+  formatters = {},
 
   -- format_on_save = {
   --   -- These options will be passed to conform.format()
