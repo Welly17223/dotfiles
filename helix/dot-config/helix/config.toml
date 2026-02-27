@@ -5,6 +5,7 @@ line-number = "relative"
 cursorline = true
 clipboard-provider = "pasteboard"
 auto-format = true
+end-of-line-diagnostics = "hint"
 
 [editor.cursor-shape]
 insert = "bar"
