@@ -30,5 +30,5 @@ return {
       desc = "Next error/warning todo comment",
     },
   },
-  lazy = false,
+  event = "VeryLazy",
 }

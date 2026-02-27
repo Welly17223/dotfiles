@@ -1,10 +1,10 @@
 return {
   {
     "junegunn/fzf",
-    lazy = false,
+    event = "VeryLazy",
   },
   {
     "junegunn/fzf.vim",
-    lazy = false,
+    event = "VeryLazy",
   },
 }

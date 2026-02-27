@@ -5,14 +5,14 @@ return {
   -- },
   {
     "tpope/vim-repeat",
-    lazy = false,
+    event = "VeryLazy",
   },
   {
     "tpope/vim-fugitive",
-    lazy = false,
+    event = "VeryLazy",
   },
   {
     "tpope/vim-unimpaired",
-    lazy = false,
+    event = "VeryLazy",
   },
 }

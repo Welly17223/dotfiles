@@ -3,7 +3,7 @@ return {
     "echasnovski/mini.ai",
     version = "*",
     opts = {},
-    lazy = false,
+    event = "VeryLazy",
   },
   {
     "echasnovski/mini.move",

@@ -29,6 +29,7 @@ M.base46 = {
     },
     St_Macro = { fg = "#98c379" },
     St_cmd = { fg = "#a0a8cd" },
+    UfoFoldedFg = { fg = "none" },
   },
 }
 
