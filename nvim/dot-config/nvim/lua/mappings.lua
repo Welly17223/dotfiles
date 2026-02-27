@@ -4,6 +4,7 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 local unmap = vim.keymap.del
+local ls = require "luasnip"
 
 -- map("n", ";", ":", { desc = "CMD enter command mode" })
 
@@ -18,12 +19,12 @@ end, { desc = "terminal toggleable horizontal term" })
 
 -- Keyboard users
 vim.keymap.set("n", "<C-t>", function()
-  require("menu").open("default")
+  require("menu").open "default"
 end, {})
 
 -- mouse users + nvimtree users!
 vim.keymap.set({ "n", "v" }, "<RightMouse>", function()
-  require('menu.utils').delete_old_menus()
+  require("menu.utils").delete_old_menus()
 
   vim.cmd.exec '"normal! \\<RightMouse>"'
 

@@ -2,7 +2,7 @@ return {
   {
     "mfussenegger/nvim-lint",
     -- ft = { "yaml", "yaml.ansible" },
-    lazy = false,
+    event = "VeryLazy",
     config = function()
       local lint = require "lint"
       lint.linters_by_ft = {

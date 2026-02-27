@@ -4,7 +4,7 @@ return {
     config = function()
       vim.notify = require "notify"
     end,
-    lazy = false,
+    event = "VeryLazy",
     opts = {},
   },
   {
